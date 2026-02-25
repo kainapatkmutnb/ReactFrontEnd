@@ -1,16 +1,83 @@
-# React + Vite
+# React Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+โปรเจกต์ React Frontend สร้างด้วย **Vite** + **React 19** สำหรับเรียนรู้พื้นฐาน React เช่น Component, Props, State และ Event Handling
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** 19.2
+- **Vite** 7.3
+- **prop-types** สำหรับตรวจสอบ Props
+- **ESLint** สำหรับตรวจสอบคุณภาพโค้ด
 
-## React Compiler
+## โครงสร้างโปรเจกต์
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+react-frontend/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   ├── Contact.jsx      # Component แสดงข้อมูลติดต่อ (email, phone)
+│   │   ├── Counter.jsx       # Component ตัวนับ เพิ่ม/ลดค่าด้วยปุ่ม (useState)
+│   │   ├── Hello.jsx         # Component แสดงข้อความทักทายพร้อมชื่อ
+│   │   └── react.svg
+│   ├── App.jsx               # Component หลัก รวม Counter, Hello, Contact
+│   ├── App.css               # สไตล์สำหรับ App
+│   ├── index.css             # Global styles
+│   └── main.jsx              # Entry point (StrictMode + ReactDOM)
+├── index.html                # HTML template
+├── vite.config.js            # Vite config (plugin-react)
+├── eslint.config.js          # ESLint config
+├── package.json
+└── README.md
+```
 
-## Expanding the ESLint configuration
+## Components
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### `Counter`
+
+- ใช้ `useState` Hook จัดการ state ตัวนับ
+- มีปุ่ม **increment** และ **decrement** สำหรับเพิ่ม/ลดค่า
+
+### `Hello`
+
+- รับ props `name` และ `message` แสดงข้อความทักทาย
+- ใช้ `PropTypes` ตรวจสอบ props
+- ถูกเรียกใช้ผ่าน `Array.map()` เพื่อ render หลายรายการจากข้อมูล
+
+### `Contact`
+
+- รับ props `email` และ `phone` แสดงข้อมูลติดต่อ
+- ใช้ `PropTypes` ตรวจสอบ props
+
+## วิธีติดตั้งและรันโปรเจกต์
+
+### ติดตั้ง Dependencies
+
+```bash
+npm install
+```
+
+### รันโปรเจกต์ (Development)
+
+```bash
+npm run dev
+```
+
+### Build สำหรับ Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### ตรวจสอบโค้ดด้วย ESLint
+
+```bash
+npm run lint
+```
