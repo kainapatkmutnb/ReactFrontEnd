@@ -1,11 +1,23 @@
-import ProductCategoryRow from './ProductCategoryRow';
-import ProductRow from './ProductRow';
+import PropTypes from "prop-types";
 
-export default function ProductTable({ products }) {
+import ProductRow from "./ProductRow";
+import ProductCategoryRow from "./ProductCategoryRow";
+
+export default function ProductTable({ products, filterText, inStockOnly }) {
     const rows = [];
     let lastCategory = null;
 
     products.forEach((product) => {
+        if (
+            product.name.toLowerCase().indexOf(
+                filterText.toLowerCase()
+            ) === -1
+        ) {
+            return;
+        }
+        if (inStockOnly && !product.stocked) {
+            return;
+        }
         if (product.category !== lastCategory) {
             rows.push(
                 <ProductCategoryRow
@@ -33,3 +45,9 @@ export default function ProductTable({ products }) {
         </table>
     );
 }
+
+ProductTable.propTypes = {
+    products: PropTypes.object.isRequired,
+    filterText: PropTypes.string.isRequired,
+    inStockOnly: PropTypes.bool.isRequired
+};

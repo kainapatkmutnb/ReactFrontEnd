@@ -1,11 +1,30 @@
-import SearchBar from './SearchBar';
-import ProductTable from './ProductTable';
+import PropTypes from "prop-types";
 
-export default function FilterableProductTable({ products }) {
+import SearchBar from "./SearchBar";
+import ProductTable from "./ProductTable";
+
+export default function FilterableProductTable({ products, filterData, filterAction, inStockOnlyData, inStockOnlyAction }) {
     return (
         <div>
-            <SearchBar />
-            <ProductTable products={products} />
+            <SearchBar
+                filterText={filterData}
+                inStockOnly={inStockOnlyData}
+                onFilterTextChange={filterAction}
+                onInStockOnlyChange={inStockOnlyAction}
+            />
+            <ProductTable
+                products={products}
+                filterText={filterData}
+                inStockOnly={inStockOnlyData}
+            />
         </div>
     );
 }
+
+FilterableProductTable.propTypes = {
+    products: PropTypes.object.isRequired,
+    filterData: PropTypes.string.isRequired,
+    filterAction: PropTypes.func.isRequired,
+    inStockOnlyData: PropTypes.bool.isRequired,
+    inStockOnlyAction: PropTypes.func.isRequired
+};

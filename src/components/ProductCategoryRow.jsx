@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function ProductCategoryRow({ category }) {
     return (
         <tr>
@@ -7,3 +9,7 @@ export default function ProductCategoryRow({ category }) {
         </tr>
     );
 }
+
+ProductCategoryRow.propTypes = {
+    category: PropTypes.string.isRequired,
+};
