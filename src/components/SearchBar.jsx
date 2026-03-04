@@ -6,6 +6,7 @@ export default function SearchBar({
     onFilterTextChange,
     onInStockOnlyChange
 }) {
+    console.log(filterText, inStockOnly);
     return (
         <form>
             <input

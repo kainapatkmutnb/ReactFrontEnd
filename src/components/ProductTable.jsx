@@ -47,7 +47,7 @@ export default function ProductTable({ products, filterText, inStockOnly }) {
 }
 
 ProductTable.propTypes = {
-    products: PropTypes.object.isRequired,
+    products: PropTypes.array.isRequired,
     filterText: PropTypes.string.isRequired,
     inStockOnly: PropTypes.bool.isRequired
 };

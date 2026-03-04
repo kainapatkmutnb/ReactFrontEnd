@@ -22,7 +22,7 @@ export default function FilterableProductTable({ products, filterData, filterAct
 }
 
 FilterableProductTable.propTypes = {
-    products: PropTypes.object.isRequired,
+    products: PropTypes.array.isRequired,
     filterData: PropTypes.string.isRequired,
     filterAction: PropTypes.func.isRequired,
     inStockOnlyData: PropTypes.bool.isRequired,
